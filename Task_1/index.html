@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Основы Vue</title>
     <link rel="stylesheet" href="theme.css" />
-    <style>
-      [v-cloak] {
-          display: none;
-      }
-    </style>
   </head>
   <body>
 
@@ -37,23 +32,23 @@
 
         </ul>
         <div>
-          <button
-              class="btn"
-              :disabled="isDisable"
-              @click="prev"
-              v-if="!isDone"
-          >Назад</button>
-          <button
-              class="btn primary"
-              @click="nextOrFinish"
-              v-if="!isDone"
-          >
-            {{ isLastStep ? 'Закончить' : 'Вперед'}}
-          </button>
+          <template v-if="!isFinish">
+            <button
+                class="btn"
+                :disabled="isDisable"
+                @click="prev"
+            >Назад</button>
+            <button
+                class="btn primary"
+                @click="nextOrFinish"
+            >
+              {{ isLastStep ? 'Закончить' : 'Вперед'}}
+            </button>
+          </template>
           <button
               class="btn"
               @click="reset"
-              v-if="isDone"
+              v-else
           >Начать заново</button>
         </div>
       </div>

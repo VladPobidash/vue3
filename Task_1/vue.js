@@ -2,7 +2,7 @@ const App = {
   data() {
     return {
       activeIndex: 0,
-      isDone: false,
+      isFinish: false,
       steps: [
         {title: 'Основы', text: 'В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.'},
         {title: 'Компоненты', text: 'Один из самых важных блоков в курсе, где вы узнаете все о компонентах. В блоке мы напишем 2 разных приложения и создадим более 5 различных UI компонентов как в реальной разработке. Блок расскажет про абсолютно все составляющие, которые есть в компонентах: взаимодействие, slots, асинхронные и динамические компоненты и тонна примеров.'},
@@ -14,15 +14,16 @@ const App = {
   },
   methods: {
     prev() {
-      this.activeIndex--
+      if (this.activeIndex !== 0)
+        this.activeIndex--
     },
     reset() {
-      this.isDone = false
+      this.isFinish = false
       this.activeIndex = 0
     },
     nextOrFinish() {
       if (this.isLastStep) {
-        this.isDone = true
+        this.isFinish = true
       } else
         this.activeIndex++
     },
